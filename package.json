@@ -22,6 +22,8 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"hafas-client": "^3.0.0-alpha.20",
+		"hafas-rest-api": "^1.0.0"
 	},
 	"scripts": {
 		"start": "node index.js"
