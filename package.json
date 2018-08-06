@@ -23,7 +23,7 @@
 	},
 	"dependencies": {
 		"hafas-client": "^3.0.0-alpha.20",
-		"hafas-rest-api": "^1.0.0"
+		"hafas-rest-api": "^1.0.1"
 	},
 	"scripts": {
 		"start": "node index.js"
