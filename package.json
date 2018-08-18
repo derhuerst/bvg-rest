@@ -22,7 +22,9 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"@derhuerst/round-robin-scheduler": "^1.0.1",
 		"hafas-client": "^3.0.0-alpha.21",
+		"hafas-client-rpc": "^2.2.2",
 		"hafas-rest-api": "^1.0.1"
 	},
 	"scripts": {
