@@ -2,6 +2,7 @@
 
 const bvgProfile = require('hafas-client/p/bvg')
 const createApi = require('hafas-rest-api')
+const createHealthCheck = require('hafas-client-health-check')
 
 const pkg = require('./package.json')
 
@@ -38,6 +39,7 @@ const config = {
 	logging: true,
 	aboutPage: true
 }
+const berlinFriedrichstr = '900000100001'
 
 const onError = (err) => {
 	console.error(err)
@@ -46,8 +48,10 @@ const onError = (err) => {
 
 pHafas
 .then((hafas) => {
-	const api = createApi(hafas, config, () => {})
+	const cfg = Object.assign(Object.create(null), config)
+	cfg.healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
 
+	const api = createApi(hafas, cfg, () => {})
 	api.listen(config.port, (err) => {
 		if (err) onError(err)
 		else console.info(`Listening on ${config.hostname}:${config.port}.`)
