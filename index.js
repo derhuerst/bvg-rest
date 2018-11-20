@@ -29,9 +29,10 @@ const pHafas = (() => {
 
 const config = {
 	hostname: process.env.HOSTNAME || '1.bvg.transport.rest',
-	port: process.env.PORT || 3000,
+	port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
 	name: pkg.name,
 	description: pkg.description,
+	version: pkg.version,
 	homepage: pkg.homepage,
 	docsLink: 'https://github.com/derhuerst/bvg-rest/blob/master/docs/index.md',
 	logging: true,
