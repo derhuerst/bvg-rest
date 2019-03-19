@@ -3,7 +3,7 @@ FROM node:alpine
 WORKDIR /app
 ADD . /app
 
-RUN apk add --update git && \
+RUN apk add --update git bash && \
 	npm install --production && \
 	rm -rf /tmp/* /var/cache/apk/*
 
@@ -12,4 +12,4 @@ EXPOSE 3000
 ENV HOSTNAME 1.bvg.transport.rest
 ENV PORT 3000
 
-CMD ["npm", "start"]
+CMD ["/bin/sh", "docker-entrypoint.sh"]
