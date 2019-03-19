@@ -2,7 +2,7 @@
 
 ***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/0466e570ad3fcdc952dc99da1ef30a084ab79f13/p/bvg/readme.md). [It has lots of advantages over theirs.](docs/why.md)
 
-![bvg-rest architecture diagram](https://rawgit.com/derhuerst/bvg-rest/master/architecture.svg)
+![bvg-rest architecture diagram](architecture.svg)
 
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/bvg-rest.svg)
 [![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
