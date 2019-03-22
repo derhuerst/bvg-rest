@@ -19,13 +19,13 @@
 	"bugs": "https://github.com/derhuerst/bvg-rest/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=6"
+		"node": ">=8"
 	},
 	"dependencies": {
 		"@derhuerst/round-robin-scheduler": "^1.0.1",
-		"hafas-client": "^3.0.0",
+		"bvg-hafas": "^2.0.0",
 		"hafas-client-health-check": "^1.0.1",
-		"hafas-client-rpc": "^2.2.2",
+		"hafas-client-rpc": "^3.1.0",
 		"hafas-rest-api": "^1.1.1"
 	},
 	"scripts": {

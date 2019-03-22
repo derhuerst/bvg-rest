@@ -1,17 +1,14 @@
 'use strict'
 
-const bvgProfile = require('hafas-client/p/bvg')
+const createBvgHafas = require('bvg-hafas')
 const createApi = require('hafas-rest-api')
 const createHealthCheck = require('hafas-client-health-check')
 
 const pkg = require('./package.json')
 
 const pHafas = (() => {
-	if (!process.env.HAFAS_CLIENT_NODES) {
-		const createHafas = require('hafas-client')
-		const hafas = createHafas(bvgProfile, 'bvg-rest')
-		return Promise.resolve(hafas)
-	}
+	const hafas = createBvgHafas('bvg-rest')
+	if (!process.env.HAFAS_CLIENT_NODES) return Promise.resolve(hafas)
 
 	const createRoundRobin = require('@derhuerst/round-robin-scheduler')
 	const createRpcClient = require('hafas-client-rpc/client')
@@ -22,7 +19,7 @@ const pHafas = (() => {
 	return new Promise((resolve, reject) => {
 		createRpcClient(createRoundRobin, nodes, (err, rpcHafas) => {
 			if (err) return reject(err)
-			rpcHafas.profile = bvgProfile
+			rpcHafas.profile = hafas.profile
 			resolve(rpcHafas)
 		})
 	})

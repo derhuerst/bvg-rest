@@ -64,7 +64,7 @@ to this one:
 {
 	tripId: '1|1026145|36|80|18072016',
 	stop: {
-		type: 'station',
+		type: 'stop',
 		id: '900000003201',
 		name: 'Hauptbahnhof (S+U), Berlin',
 		location: {
