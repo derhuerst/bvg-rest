@@ -9,7 +9,7 @@ RUN apk add --update git bash && \
 
 EXPOSE 3000
 
-ENV HOSTNAME 1.bvg.transport.rest
+ENV HOSTNAME 2.bvg.transport.rest
 ENV PORT 3000
 
 CMD ["/bin/sh", "docker-entrypoint.sh"]

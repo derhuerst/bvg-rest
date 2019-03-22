@@ -1,6 +1,6 @@
 # Berlin & Brandenburg Public Transport API
 
-This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md). The public endpoint is [`1.bvg.transport.rest`](`https://1.bvg.transport.rest/`).
+This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md). The public endpoint is [`2.bvg.transport.rest`](`https://2.bvg.transport.rest/`).
 
 ## all routes
 
@@ -29,7 +29,7 @@ This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https:
 ### examples
 
 ```shell
-curl 'https://1.bvg.transport.rest/stops/nearby?latitude=52.52725&longitude=13.4123'
+curl 'https://2.bvg.transport.rest/stops/nearby?latitude=52.52725&longitude=13.4123'
 ```
 
 
@@ -43,7 +43,7 @@ curl 'https://1.bvg.transport.rest/stops/nearby?latitude=52.52725&longitude=13.4
 ### examples
 
 ```shell
-curl 'https://1.bvg.transport.rest/stops/900000013102'
+curl 'https://2.bvg.transport.rest/stops/900000013102'
 ```
 
 
@@ -67,9 +67,9 @@ Returns departures at a stop/station.
 
 ```shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://1.bvg.transport.rest/stops/900000013102/departures?direction=900000014101&duration=10'
+curl 'https://2.bvg.transport.rest/stops/900000013102/departures?direction=900000014101&duration=10'
 # at U Kottbusser Tor, without direction
-curl 'https://1.bvg.transport.rest/stops/900000013102/departures?when=tomorrow%206pm'
+curl 'https://2.bvg.transport.rest/stops/900000013102/departures?when=tomorrow%206pm'
 ```
 
 
@@ -126,9 +126,9 @@ Output from [`hafas.journeys(…)`](https://github.com/public-transport/hafas-cl
 ### examples
 
 ```shell
-curl 'https://1.bvg.transport.rest/journeys?from=900000017104&to=900000017101'
-curl 'https://1.bvg.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
-curl 'https://1.bvg.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
+curl 'https://2.bvg.transport.rest/journeys?from=900000017104&to=900000017101'
+curl 'https://2.bvg.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://2.bvg.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
 
@@ -146,7 +146,7 @@ Output from [`hafas.refreshJourney(…)`](https://github.com/public-transport/ha
 ### examples
 
 ```shell
-curl 'https://1.bvg.transport.rest/journeys/T%24A%3D1%40O%3DS%2BU%20Westhafen%20(Berlin)%40L%3D900001201%40a%3D128%40%24A%3D1%40O%3DS%2BU%20Gesundbrunnen%20Bhf%20(Berlin)%40L%3D900007102%40a%3D128%40%24201808061945%24201808061950%24%20%20%20%20%20S41%24%0A'
+curl 'https://2.bvg.transport.rest/journeys/T%24A%3D1%40O%3DS%2BU%20Westhafen%20(Berlin)%40L%3D900001201%40a%3D128%40%24A%3D1%40O%3DS%2BU%20Gesundbrunnen%20Bhf%20(Berlin)%40L%3D900007102%40a%3D128%40%24201808061945%24201808061950%24%20%20%20%20%20S41%24%0A'
 ```
 
 
@@ -165,7 +165,7 @@ Output from [`hafas.trip(…)`](https://github.com/public-transport/hafas-client
 ### examples
 
 ```shell
-curl 'https://1.bvg.transport.rest/trips/1|32082|1|86|26062017?lineName=RE7'
+curl 'https://2.bvg.transport.rest/trips/1|32082|1|86|26062017?lineName=RE7'
 ```
 
 
@@ -187,8 +187,8 @@ Output from [`hafas.locations(…)`](https://github.com/public-transport/hafas-c
 ### examples
 
 ```shell
-curl 'https://1.bvg.transport.rest/locations?query=Alexanderplatz'
-curl 'https://1.bvg.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
+curl 'https://2.bvg.transport.rest/locations?query=Alexanderplatz'
+curl 'https://2.bvg.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
 ```
 
 
@@ -209,5 +209,5 @@ curl 'https://1.bvg.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C
 ### examples
 
 ```shell
-curl 'https://1.bvg.transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
+curl 'https://2.bvg.transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
 ```
