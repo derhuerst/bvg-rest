@@ -1,10 +1,14 @@
 'use strict'
 
+const {readFileSync} = require('fs')
+const {join} = require('path')
 const createBvgHafas = require('bvg-hafas')
 const createApi = require('hafas-rest-api')
 const createHealthCheck = require('hafas-client-health-check')
 
 const pkg = require('./package.json')
+
+const docsAsMarkdown = readFileSync(join(__dirname, 'docs', 'index.md'), {encoding: 'utf8'})
 
 const pHafas = (() => {
 	const hafas = createBvgHafas('bvg-rest')
@@ -32,9 +36,10 @@ const config = {
 	description: pkg.description,
 	version: pkg.version,
 	homepage: pkg.homepage,
-	docsLink: 'https://github.com/derhuerst/bvg-rest/blob/master/docs/index.md',
+	docsLink: '/docs',
 	logging: true,
-	aboutPage: true
+	aboutPage: true,
+	docsAsMarkdown
 }
 const berlinFriedrichstr = '900000100001'
 

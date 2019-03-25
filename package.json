@@ -30,5 +30,8 @@
 	},
 	"scripts": {
 		"start": "node index.js"
+	},
+	"devDependencies": {
+		"pino-pretty": "^2.5.0"
 	}
 }

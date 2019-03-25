@@ -4,6 +4,7 @@
 
 ![bvg-rest architecture diagram](architecture.svg)
 
+[![Docker build status](https://img.shields.io/docker/build/derhuerst/bvg-rest.svg)](https://hub.docker.com/r/derhuerst/bvg-rest/)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/bvg-rest.svg)
 [![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
 [![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
