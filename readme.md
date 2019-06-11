@@ -1,6 +1,8 @@
 # bvg-rest
 
-***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/0466e570ad3fcdc952dc99da1ef30a084ab79f13/p/bvg/readme.md). [It has lots of advantages over theirs.](docs/why.md)
+***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/0466e570ad3fcdc952dc99da1ef30a084ab79f13/p/bvg/readme.md).
+
+[API Documentation](docs/index.md) | [Why?](docs/why.md)
 
 ![bvg-rest architecture diagram](architecture.svg)
 
@@ -9,21 +11,34 @@
 [![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
 
 
-## Installation
+## installing & running
+
+### via Docker
+
+A Docker image [is available as `derhuerst/bvg-rest`](https://hub.docker.com/r/derhuerst/bvg-rest).
+
+```shell
+docker run -d -p 3000:3000 derhuerst/bvg-rest
+```
+
+### manually
 
 ```shell
 git clone https://github.com/derhuerst/bvg-rest.git
 cd bvg-rest
+git checkout 1
 npm install --production
 npm start
 ```
 
-[A Docker image is available as `derhuerst/bvg-rest`.](https://hub.docker.com/r/derhuerst/bvg-rest)
+To keep the API running permanently, use tools like [`forever`](https://github.com/foreverjs/forever#forever), [`pm2`](http://pm2.keymetrics.io) or [`systemd`](https://wiki.debian.org/systemd).
 
 
-## Usage
+## Related Projects
 
-**[API documentation](docs/index.md)**
+- [`vbb-modules`](https://github.com/derhuerst/vbb-modules) – List of JavaScript modules for Berlin & Brandenburg public transport.
+- [`bvg-hafas`](https://github.com/derhuerst/bvg-hafas) – JavaScript client for the BVG HAFAS API.
+- [`db-rest`](https://github.com/derhuerst/db-rest) – A clean REST API wrapping around the Deutsche Bahn API.
 
 
 ## Contributing
