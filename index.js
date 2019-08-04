@@ -7,6 +7,7 @@ const createApi = require('hafas-rest-api')
 const createHealthCheck = require('hafas-client-health-check')
 
 const pkg = require('./package.json')
+const stations = require('./routes/stations')
 
 const docsAsMarkdown = readFileSync(join(__dirname, 'docs', 'index.md'), {encoding: 'utf8'})
 
@@ -49,6 +50,8 @@ pHafas
 	cfg.healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
 
 	const api = createApi(hafas, cfg, () => {})
+	api.get('/stations', stations(hafas, config))
+
 	api.listen(config.port, (err) => {
 		if (err) {
 			api.locals.logger.error(err)
