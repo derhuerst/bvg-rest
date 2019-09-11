@@ -6,7 +6,7 @@ This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https:
 
 - [`GET /stops/nearby`](#get-stopsnearby)
 - [`GET /stops/:id`](#get-stopsid)
-- [`GET /stops/:id/departures`](#get-stopsiddepartures)
+- [`GET /stations/:id/departures`](#get-stationssiddepartures)
 - [`GET /journeys`](#get-journeys)
 - [`GET /journeys/:ref`](#get-journeysref)
 - [`GET /trips/:id`](#get-tripsid)
@@ -47,7 +47,7 @@ curl 'https://2.bvg.transport.rest/stops/900000013102'
 ```
 
 
-## `GET /stops/:id/departures`
+## `GET /stations/:id/departures`
 
 Returns departures at a stop/station.
 
@@ -67,9 +67,9 @@ Returns departures at a stop/station.
 
 ```shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://2.bvg.transport.rest/stops/900000013102/departures?direction=900000014101&duration=10'
+curl 'https://2.bvg.transport.rest/stations/900000013102/departures?direction=900000014101&duration=10'
 # at U Kottbusser Tor, without direction
-curl 'https://2.bvg.transport.rest/stops/900000013102/departures?when=tomorrow%206pm'
+curl 'https://2.bvg.transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
 ```
 
 
@@ -127,7 +127,7 @@ Output from [`hafas.journeys(…)`](https://github.com/public-transport/hafas-cl
 
 ```shell
 curl 'https://2.bvg.transport.rest/journeys?from=900000017104&to=900000017101'
-curl 'https://2.bvg.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://2.bvg.transport.rest/journeys?from=900000023201&to.id=900980720&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
 curl 'https://2.bvg.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
