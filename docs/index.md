@@ -6,7 +6,7 @@ This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https:
 
 - [`GET /stops/nearby`](#get-stopsnearby)
 - [`GET /stops/:id`](#get-stopsid)
-- [`GET /stations/:id/departures`](#get-stationssiddepartures)
+- [`GET /stations/:id/departures`](#get-stationsiddepartures)
 - [`GET /journeys`](#get-journeys)
 - [`GET /journeys/:ref`](#get-journeysref)
 - [`GET /trips/:id`](#get-tripsid)
