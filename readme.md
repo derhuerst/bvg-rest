@@ -32,14 +32,15 @@ npm install --production
 npm start
 ```
 
-To keep the API running permanently, use tools like [`forever`](https://github.com/foreverjs/forever#forever), [`pm2`](http://pm2.keymetrics.io) or [`systemd`](https://wiki.debian.org/systemd).
+To keep the API running permanently, use tools like [`forever`](https://github.com/foreverjs/forever#forever) or [`systemd`](https://wiki.debian.org/systemd).
 
 
 ## Related Projects
 
 - [`vbb-modules`](https://github.com/derhuerst/vbb-modules) – List of JavaScript modules for Berlin & Brandenburg public transport.
-- [`bvg-hafas`](https://github.com/derhuerst/bvg-hafas) – JavaScript client for the BVG HAFAS API.
+- [`bvg-hafas`](https://github.com/public-transport/bvg-hafas) – JavaScript client for the BVG HAFAS API.
 - [`db-rest`](https://github.com/derhuerst/db-rest) – A clean REST API wrapping around the Deutsche Bahn API.
+- [`hvv-rest`](https://github.com/derhuerst/hvv-rest) – A clean REST API wrapping around the HVV API.
 
 
 ## Contributing
