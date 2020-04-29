@@ -2,33 +2,22 @@
 
 const {readFileSync} = require('fs')
 const {join} = require('path')
-const createBvgHafas = require('bvg-hafas')
-const createApi = require('hafas-rest-api')
-const createHealthCheck = require('hafas-client-health-check')
-
-const pkg = require('./package.json')
 const stops = require('./routes/stops')
+const createBvgHafas = require('bvg-hafas')
+const createHealthCheck = require('hafas-client-health-check')
+const createApi = require('hafas-rest-api')
+const pkg = require('./package.json')
+
+const berlinFriedrichstr = '900000100001'
 
 const docsAsMarkdown = readFileSync(join(__dirname, 'docs', 'index.md'), {encoding: 'utf8'})
 
-const pHafas = (() => {
-	const hafas = createBvgHafas('bvg-rest')
-	if (!process.env.HAFAS_CLIENT_NODES) return Promise.resolve(hafas)
+const modifyRoutes = (routes, hafas, config) => ({
+	...routes,
+	'/stops': stops(hafas, config),
+})
 
-	const createRoundRobin = require('@derhuerst/round-robin-scheduler')
-	const createRpcClient = require('hafas-client-rpc/client')
-
-	const nodes = process.env.HAFAS_CLIENT_NODES.split(',')
-	console.info('Using these hafas-client-rpc nodes:', nodes)
-
-	return new Promise((resolve, reject) => {
-		createRpcClient(createRoundRobin, nodes, (err, rpcHafas) => {
-			if (err) return reject(err)
-			rpcHafas.profile = hafas.profile
-			resolve(rpcHafas)
-		})
-	})
-})()
+const hafas = createBvgHafas('bvg-rest')
 
 const config = {
 	hostname: process.env.HOSTNAME || 'localhost',
@@ -40,26 +29,18 @@ const config = {
 	docsLink: '/docs',
 	logging: true,
 	aboutPage: true,
-	docsAsMarkdown
+	docsAsMarkdown,
+	etags: 'strong',
+	healthCheck: createHealthCheck(hafas, berlinFriedrichstr),
+	modifyRoutes,
 }
-const berlinFriedrichstr = '900000100001'
 
-pHafas
-.then((hafas) => {
-	const cfg = Object.assign(Object.create(null), config)
-	cfg.healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
+const api = createApi(hafas, config, () => {})
 
-	const api = createApi(hafas, cfg, () => {})
-	api.get('/stops', stops(hafas, config))
-
-	api.listen(config.port, (err) => {
-		if (err) {
-			api.locals.logger.error(err)
-			process.exitCode = 1
-		} else api.locals.logger.info(`Listening on ${config.hostname}:${config.port}.`)
-	})
-})
-.catch((err) => {
-	console.error(err)
-	process.exitCode = 1
+api.listen(config.port, (err) => {
+	const {logger} = api.locals
+	if (err) {
+		logger.error(err)
+		process.exit(1)
+	} else logger.info(`Listening on ${config.hostname}:${config.port}.`)
 })

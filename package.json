@@ -19,22 +19,20 @@
 	"bugs": "https://github.com/derhuerst/bvg-rest/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=8"
+		"node": ">=10"
 	},
 	"dependencies": {
-		"@derhuerst/round-robin-scheduler": "^1.0.1",
-		"bvg-hafas": "^2.0.0",
+		"bvg-hafas": "^3.0.1",
 		"cli-native": "^1.0.0",
-		"hafas-client-health-check": "^1.0.1",
-		"hafas-client-rpc": "^3.1.0",
-		"hafas-rest-api": "^2.0.0",
-		"vbb-stations": "^6.10.0",
-		"vbb-stations-autocomplete": "^3.9.0"
+		"hafas-client-health-check": "^2.1.1",
+		"hafas-rest-api": "^3.3.0",
+		"vbb-stations": "^7.3.0",
+		"vbb-stations-autocomplete": "^4.3.0"
 	},
 	"scripts": {
 		"start": "node index.js"
 	},
 	"devDependencies": {
-		"pino-pretty": "^2.5.0"
+		"pino-pretty": "^4.0.0"
 	}
 }

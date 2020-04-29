@@ -30,6 +30,29 @@ const createStopsRoute = (hafas) => {
 		const results = autocomplete(q.query, nrOfResults, fuzzy, completion)
 		res.json(results.map(enrichResult))
 	}
+
+	stops.queryParameters = {
+		query: {
+			description: 'Filter by name, e.g. `mehringd` with `completion=true`, or `mehringdamm` with `completion=false`.',
+			type: 'string',
+			defaultStr: '–',
+		},
+		results: {
+			description: 'How many stops/stations?',
+			type: 'number',
+			default: 5,
+		},
+		fuzzy: {
+			description: 'Find other than *exact* matches?',
+			type: 'boolean',
+			default: false,
+		},
+		completion: {
+			description: 'Search by prefix?',
+			type: 'boolean',
+			default: true,
+		},
+	}
 	return stops
 }
 
