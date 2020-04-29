@@ -4,6 +4,7 @@ This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https:
 
 ## all routes
 
+- [`GET /stops`](#get-stops)
 - [`GET /stops/nearby`](#get-stopsnearby)
 - [`GET /stops/:id`](#get-stopsid)
 - [`GET /stations/:id/departures`](#get-stationsiddepartures)
@@ -12,6 +13,27 @@ This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https:
 - [`GET /trips/:id`](#get-tripsid)
 - [`GET /locations`](#get-locations)
 - [`GET /radar`](#get-radar)
+
+
+## `GET /stops`
+
+Uses [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete) to find stops/stations matching `query`. If you don't pass `query`, it will just return all stops from [`vbb-stations`](https://npmjs.com/package/vbb-stations).
+
+- `query`: Filter by name, e.g. `mehringd` with `completion=true`, or `mehringdamm` with `completion=false`.
+- `results`: How many stops/stations? Default: `5`.
+- `fuzzy`: Find other than *exact* matches? Default: `false`.
+- `completion`: Search by prefix? Default: `true`.
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+# without completion
+curl 'https://2.bvg.transport.rest/stops?completion=false&query=mehringdamm'
+# with completion
+curl 'https://2.bvg.transport.rest/stops?query=mehringd'
+```
 
 ## `GET /stops/nearby`
 
