@@ -10,7 +10,7 @@ RUN apk add --update git bash && \
 
 EXPOSE 3000
 
-ENV HOSTNAME 2.bvg.transport.rest
+ENV HOSTNAME v5.bvg.transport.rest
 ENV PORT 3000
 
 CMD ["node", "index.js"]

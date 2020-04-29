@@ -1,6 +1,6 @@
 # bvg-rest
 
-***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/0466e570ad3fcdc952dc99da1ef30a084ab79f13/p/bvg/readme.md).
+***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/e02a20b1de59bda3cd380445b6105e4c46036636/p/bvg/readme.md). It is deployed at [`v5.bvg.transport.rest`](https://v5.bvg.transport.rest/).
 
 [API Documentation](docs/index.md) | [Why?](docs/why.md)
 
@@ -16,10 +16,10 @@
 
 ### via Docker
 
-A Docker image [is available as `derhuerst/bvg-rest`](https://hub.docker.com/r/derhuerst/bvg-rest).
+A Docker image [is available as `derhuerst/bvg-rest:5`](https://hub.docker.com/r/derhuerst/bvg-rest:5).
 
 ```shell
-docker run -d -p 3000:3000 derhuerst/bvg-rest
+docker run -d -p 3000:3000 derhuerst/bvg-rest:5
 ```
 
 ### manually
@@ -27,7 +27,7 @@ docker run -d -p 3000:3000 derhuerst/bvg-rest
 ```shell
 git clone https://github.com/derhuerst/bvg-rest.git
 cd bvg-rest
-git checkout 2
+git checkout 5
 npm install --production
 npm start
 ```

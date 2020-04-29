@@ -2,7 +2,7 @@
 	"private": true,
 	"name": "bvg-rest",
 	"description": "An HTTP API for Berlin & Brandenburg public transport.",
-	"version": "2.0.0",
+	"version": "5.0.0",
 	"main": "index.js",
 	"keywords": [
 		"public",
@@ -14,7 +14,7 @@
 		"rest"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
-	"homepage": "https://github.com/derhuerst/bvg-rest/tree/2",
+	"homepage": "https://github.com/derhuerst/bvg-rest/tree/5",
 	"repository": "derhuerst/bvg-rest",
 	"bugs": "https://github.com/derhuerst/bvg-rest/issues",
 	"license": "ISC",
