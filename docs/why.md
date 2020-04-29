@@ -1,18 +1,18 @@
 # Why use this API?
 
-The public transport agency *Berliner Verkehrsbetriebe* (BVG) itself provides an API (this API wraps around it). Why use this one? (And what could BVG do better?)
+The public transport agency [*Berliner Verkehrsbetriebe* (BVG) itself provides an API called *HAFAS*](https://github.com/public-transport/hafas-client/blob/e02a20b1de59bda3cd380445b6105e4c46036636/p/bvg/readme.md), this API wraps it. Why use this one? (And what could BVG do better?)
 
 ## No API Key
 
-Especially on web sites/apps, it isn't feasable to the send API keys to the client. Also, you have to obtain these keys manually and cannot automatically revoke them. **This API doesn't require a key.**
+The underlying HAFAS API has been designed to be *private*: It has only 1 static API key, which is valid for an unlimited time, and which can't easily be revoked/renewed. **This API doesn't require a key.**
 
 ## CORS
 
-If you want to use transport information on a web site/app, [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) must be enabled. Otherwise, you would have to send all requests through your own proxy server. **This API has CORS enabled.**
+If you want to use transport information on a web site/app, [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) must be enabled. Otherwise, you would have to send all requests through your own proxy server. **This API has CORS enabled**, the underyling HAFAS API does not.
 
-## Sane Markup
+## Readable Markup
 
-Compare the official API:
+Compare the underlying HAFAS API:
 
 ```js
 {
@@ -89,10 +89,14 @@ to this one:
 }
 ```
 
+## Caching-friendly
+
+This API sends [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) & [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) headers, allowing clients to refresh their state efficiently.
+
 ## HTTP/2
 
 [HTTP/2](https://http2.github.io/) allows multiple requests at a time, efficiently pipelines sequential requests and compresses headers. See [Cloudflare's HTTP/2 page](https://blog.cloudflare.com/http-2-for-web-developers/).
 
 ## Proper HTTP, Proper REST
 
-All methods in this API comply with the [REST principles](https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services) and use proper [HTTP methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
+This wrapper API follows [REST-ful design principles](https://restfulapi.net), it uses `GET`, and proper paths & headers.
