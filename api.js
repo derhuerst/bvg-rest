@@ -3,6 +3,9 @@
 const stops = require('./routes/stops')
 const createBvgHafas = require('bvg-hafas')
 const createHealthCheck = require('hafas-client-health-check')
+const {createClient: createRedis} = require('redis')
+const withCache = require('cached-hafas-client')
+const redisStore = require('cached-hafas-client/stores/redis')
 const createApi = require('hafas-rest-api')
 const pkg = require('./package.json')
 
@@ -13,7 +16,31 @@ const modifyRoutes = (routes, hafas, config) => ({
 	'/stops': stops(hafas, config),
 })
 
-const hafas = createBvgHafas('bvg-rest')
+let hafas = createBvgHafas('bvg-rest')
+let healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
+
+if (process.env.REDIS_URL) {
+	const redis = createRedis({
+		url: process.env.REDIS_URL,
+	})
+	redis.on('error', (err) => {
+		api.locals.logger.error(err)
+	})
+	hafas = withCache(hafas, redisStore(redis))
+
+	const checkHafas = healthCheck
+	const checkRedis = () => new Promise((resolve, reject) => {
+		setTimeout(reject, 1000, new Error('didn\'t receive a PONG'))
+		redis.ping((err, res) => {
+			if (err) reject(err)
+			else resolve(res === 'PONG')
+		})
+	})
+	healthCheck = async () => (
+		(await checkHafas()) === true &&
+		(await checkRedis()) === true
+	)
+}
 
 const config = {
 	hostname: process.env.HOSTNAME || 'localhost',
@@ -26,7 +53,7 @@ const config = {
 	logging: true,
 	aboutPage: true,
 	etags: 'strong',
-	healthCheck: createHealthCheck(hafas, berlinFriedrichstr),
+	healthCheck,
 	modifyRoutes,
 }
 
