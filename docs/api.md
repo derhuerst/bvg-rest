@@ -2,7 +2,7 @@
 
 [`v5.bvg.transport.rest`](https://v5.bvg.transport.rest/) is a [REST API](https://restfulapi.net). Data is being returned as [JSON](https://www.json.org/).
 
-You can just use the API without authentication. In the future, we may [rate-limit](https://apisyouwonthate.com/blog/what-is-api-rate-limiting-all-about) your IP address if you make too many requests.
+You can just use the API without authentication. There's a [rate limit](https://apisyouwonthate.com/blog/what-is-api-rate-limiting-all-about) of 100 request/minute (burst 200 requests/minute) set up.
 
 *Note:* For [URL-encoding](https://de.wikipedia.org/wiki/URL-Encoding), this documentation uses the `url-encode` tool of the [`url-decode-encode-cli` package](https://www.npmjs.com/package/url-decode-encode-cli).
 
