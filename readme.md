@@ -1,6 +1,10 @@
 # bvg-rest
 
-***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/0466e570ad3fcdc952dc99da1ef30a084ab79f13/p/bvg/readme.md).
+**Deprecated. Please use the [latest version](https://github.com/derhuerst/bvg-rest) of this API.**
+
+---
+
+*bvg-rest* is a public transport REST API, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/0466e570ad3fcdc952dc99da1ef30a084ab79f13/p/bvg/readme.md).
 
 [API Documentation](docs/index.md) | [Why?](docs/why.md)
 

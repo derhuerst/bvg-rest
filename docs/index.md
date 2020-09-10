@@ -1,5 +1,9 @@
 # Berlin & Brandenburg Public Transport API
 
+**Deprecated. Please use the [latest version](https://github.com/derhuerst/bvg-rest) of this API.**
+
+---
+
 This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md). The public endpoint is [`2.bvg.transport.rest`](`https://2.bvg.transport.rest/`).
 
 ## all routes
