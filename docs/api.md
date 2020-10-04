@@ -11,16 +11,18 @@ You can just use the API without authentication. There's a [rate limit](https://
 
 *Note:* These routes only wrap [`hafas-client@5` methods](https://github.com/public-transport/hafas-client/blob/5/docs/readme.md), check their docs for more details.
 
-- [`GET /locations`](#get-locations)
+
 - [`GET /stops/nearby`](#get-stopsnearby)
 - [`GET /stops/reachable-from`](#get-stopsreachable-from)
 - [`GET /stops/:id`](#get-stopsid)
 - [`GET /stops/:id/departures`](#get-stopsiddepartures)
 - [`GET /stops/:id/arrivals`](#get-stopsidarrivals)
 - [`GET /journeys`](#get-journeys)
-- [`GET /journeys/:ref`](#get-journeysref)
 - [`GET /trips/:id`](#get-tripsid)
+- [`GET /locations`](#get-locations)
 - [`GET /radar`](#get-radar)
+- [`GET /journeys/:ref`](#get-journeysref)
+- [`GET /stops`](#get-stops)
 - [date/time parameters](#datetime-parameters)
 
 

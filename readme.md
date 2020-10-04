@@ -2,10 +2,11 @@
 
 ***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/e02a20b1de59bda3cd380445b6105e4c46036636/p/bvg/readme.md). It is deployed at [`v5.bvg.transport.rest`](https://v5.bvg.transport.rest/).
 
-[**documentation**](docs/readme.md)
+[**API documentation**](docs/readme.md)
 
 ![bvg-rest architecture diagram](architecture.svg)
 
+[![API status](https://badgen.net/uptime-robot/status/m784879513-ed3cc45a865db0ba57af0001)](https://stats.uptimerobot.com/57wNLs39M/784879513)
 [![Docker build status](https://img.shields.io/docker/build/derhuerst/bvg-rest.svg)](https://hub.docker.com/r/derhuerst/bvg-rest/)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/bvg-rest.svg)
 [![chat with me on Gitter](https://img.shields.io/badge/chat%20with%20me-on%20gitter-512e92.svg)](https://gitter.im/derhuerst)
