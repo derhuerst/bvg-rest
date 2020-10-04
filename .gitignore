@@ -8,3 +8,6 @@ pnpm-debug.log
 
 /package-lock.json
 /shrinkwrap.yaml
+
+/docs/*.html
+/docs/syntax.css

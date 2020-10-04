@@ -1,5 +1,6 @@
 'use strict'
 
+const {join: pathJoin} = require('path')
 const stops = require('./routes/stops')
 const createBvgHafas = require('bvg-hafas')
 const createHealthCheck = require('hafas-client-health-check')
@@ -7,7 +8,10 @@ const {createClient: createRedis} = require('redis')
 const withCache = require('cached-hafas-client')
 const redisStore = require('cached-hafas-client/stores/redis')
 const createApi = require('hafas-rest-api')
+const serveStatic = require('serve-static')
 const pkg = require('./package.json')
+
+const docsRoot = pathJoin(__dirname, 'docs')
 
 const berlinFriedrichstr = '900000100001'
 
@@ -51,13 +55,18 @@ const config = {
 	homepage: pkg.homepage,
 	docsLink: 'https://github.com/derhuerst/bvg-rest/blob/5/docs/readme.md',
 	logging: true,
-	aboutPage: true,
+	aboutPage: false,
 	etags: 'strong',
+	csp: `default-src 'none' style-src 'self' 'unsafe-inline' img-src https:`,
 	healthCheck,
 	modifyRoutes,
 }
 
-const api = createApi(hafas, config, () => {})
+const api = createApi(hafas, config, (api) => {
+	api.use('/', serveStatic(docsRoot, {
+		extensions: ['html', 'htm'],
+	}))
+})
 
 module.exports = {
 	config,
