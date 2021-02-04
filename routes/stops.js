@@ -31,6 +31,62 @@ const createStopsRoute = (hafas) => {
 		res.json(results.map(enrichResult))
 	}
 
+	stops.openapiPaths = {
+		'/stops': {
+			get: {
+				summary: 'Autocompletes stops/stations by name or filters stops/stations.',
+				description: `\
+Uses [\`vbb-stations-autocomplete\`](https://npmjs.com/package/vbb-stations-autocomplete) to find stops/stations matching \`query\`. If you don't pass \`query\`, it will just return all stops from [\`vbb-stations\`](https://npmjs.com/package/vbb-stations).`,
+				parameters: [{
+					name: 'query',
+					in: 'query',
+					description: 'Filter by name, e.g. `mehringd` with `completion=true`, or `mehringdamm` with `completion=false`.',
+					schema: {
+						type: 'string',
+					},
+				}, {
+					name: 'limit',
+					in: 'query',
+					description: '*If `query` is used:* Return at most `n` stations.',
+					schema: {
+						type: 'integer',
+						default: 5,
+					},
+				}, {
+					name: 'fuzzy',
+					in: 'query',
+					description: 'Find other than *exact* matches?',
+					schema: {
+						type: 'boolean',
+						default: false,
+					},
+				}, {
+					name: 'completion',
+					in: 'query',
+					description: 'Search by prefix?',
+					schema: {
+						type: 'boolean',
+						default: true,
+					},
+				}],
+				responses: {
+					'2XX': {
+						description: 'An array of stops/stations, in the [`vbb-stations` format](https://github.com/derhuerst/vbb-stations/blob/master/readme.md).',
+						content: {
+							'application/json': {
+								schema: {
+									type: 'array',
+									items: {type: 'object'}, // todo
+								},
+								// todo: example(s)
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+
 	stops.queryParameters = {
 		query: {
 			description: 'Filter by name, e.g. `mehringd` with `completion=true`, or `mehringdamm` with `completion=false`.',
