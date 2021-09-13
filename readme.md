@@ -7,7 +7,6 @@
 ![bvg-rest architecture diagram](architecture.svg)
 
 [![API status](https://badgen.net/uptime-robot/status/m784879513-ed3cc45a865db0ba57af0001)](https://stats.uptimerobot.com/57wNLs39M/784879513)
-[![Docker build status](https://img.shields.io/docker/build/derhuerst/bvg-rest.svg)](https://hub.docker.com/r/derhuerst/bvg-rest/)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/bvg-rest.svg)
 [![support me via GitHub Sponsors](https://img.shields.io/badge/support%20me-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
 [![chat with me on Twitter](https://img.shields.io/badge/chat%20with%20me-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
