@@ -44,6 +44,7 @@ parameter | description | type | default value
 `poi` | Show addresses? | boolean | `true`
 `linesOfStops` | Parse & return lines of each stop/station? | boolean | `false`
 `language` | Language of the results. | string | `en`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -106,6 +107,7 @@ parameter | description | type | default value
 `poi` | Return points of interest? | boolean | `false`
 `linesOfStops` | Parse & expose lines at each stop/station? | boolean | `false`
 `language` | Language of the results. | string | `en`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -164,6 +166,7 @@ parameter | description | type | default value
 `ferry` | Include Fähre (F)? | boolean | `true`
 `express` | Include IC/ICE (E)? | boolean | `true`
 `regional` | Include RB/RE (R)? | boolean | `true`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -221,6 +224,7 @@ parameter | description | type | default value
 ----------|-------------|------|--------------
 `linesOfStops` | Parse & expose lines at each stop/station? | boolean | `false`
 `language` | Language of the results. | string | `en`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -266,6 +270,7 @@ parameter | description | type | default value
 `ferry` | Include Fähre (F)? | boolean | `true`
 `express` | Include IC/ICE (E)? | boolean | `true`
 `regional` | Include RB/RE (R)? | boolean | `true`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -332,6 +337,7 @@ parameter | description | type | default value
 `ferry` | Include Fähre (F)? | boolean | `true`
 `express` | Include IC/ICE (E)? | boolean | `true`
 `regional` | Include RB/RE (R)? | boolean | `true`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -385,6 +391,7 @@ parameter | description | type | default value
 `ferry` | Include Fähre (F)? | boolean | `true`
 `express` | Include IC/ICE (E)? | boolean | `true`
 `regional` | Include RB/RE (R)? | boolean | `true`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Examples
 
@@ -407,10 +414,11 @@ The journey will be the same (equal `from`, `to`, `via`, date/time & vehicles us
 parameter | description | type | default value
 ----------|-------------|------|--------------
 `stopovers` | Fetch & parse stopovers on the way? | boolean | `false`
-`tickets` | Fetch & parse a shape for each journey leg? | boolean | `false`
-`polylines` | Return information about available tickets? | boolean | `false`
+`tickets` | Return information about available tickets? | boolean | `false`
+`polylines` | Fetch & parse a shape for each journey leg? | boolean | `false`
 `remarks` | Parse & return hints & warnings? | boolean | `true`
 `language` | Language of the results. | string | `en`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -439,6 +447,7 @@ parameter | description | type | default value
 `remarks` | Parse & return hints & warnings? | boolean | `true`
 `polyline` | Fetch & parse the geographic shape of the trip? | boolean | `false`
 `language` | Language of the results. | string | `en`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
@@ -470,6 +479,7 @@ parameter | description | type | default value
 `frames` | Number of frames to compute. | integer | `3`
 `polylines` | Fetch & parse a geographic shape for the movement of each vehicle? | boolean | `true`
 `language` | Language of the results. | string | `en`
+`pretty` | Pretty-print JSON responses? | boolean | `true`
 
 ### Example
 
