@@ -42,8 +42,8 @@ if (process.env.REDIS_URL) {
 }
 
 const config = {
-	hostname: process.env.HOSTNAME || 'localhost',
-	port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
+	hostname: process.env.HOSTNAME || 'localhost',
+	port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
 	name: pkg.name,
 	description: pkg.description,
 	version: pkg.version,
