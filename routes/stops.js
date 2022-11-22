@@ -1,12 +1,8 @@
 'use strict'
 
-const getAllStations = require('vbb-stations')
 const parse = require('cli-native').to
 const autocomplete = require('vbb-stations-autocomplete')
-
-const allStations = getAllStations()
-const allStationsById = Object.create(null)
-for (const s of allStations) allStationsById[s.id] = s
+const {allStations, allStationsById} = require('../lib/vbb-stations')
 
 const enrichResult = (res) => {
 	const station = allStationsById[res.id]
