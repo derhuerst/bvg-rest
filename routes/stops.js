@@ -71,12 +71,12 @@ Uses [\`vbb-stations-autocomplete@4\`](https://github.com/derhuerst/vbb-stations
 				}],
 				responses: {
 					'2XX': {
-						description: 'An array of stops/stations, in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md).',
+						description: 'An object of stops/stations in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md), with their IDs as the keys.',
 						content: {
 							'application/json': {
 								schema: {
-									type: 'array',
-									items: {type: 'object'}, // todo
+									// todo
+									type: 'object',
 								},
 								// todo: example(s)
 							},
