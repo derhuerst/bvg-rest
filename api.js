@@ -65,6 +65,7 @@ const api = createApi(hafas, config, (api) => {
 })
 
 module.exports = {
+	hafas,
 	config,
 	api,
 }
