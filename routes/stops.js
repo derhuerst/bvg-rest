@@ -4,6 +4,8 @@ const parse = require('cli-native').to
 const autocomplete = require('vbb-stations-autocomplete')
 const {allStations, allStationsById} = require('../lib/vbb-stations')
 
+// todo: DRY with db-rest/routes/stations.js & vbb-rest/routes/stations.js?
+
 const enrichResult = (res) => {
 	const station = allStationsById[res.id]
 	return station ? Object.assign({}, station, res) : res

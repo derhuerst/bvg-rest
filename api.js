@@ -20,7 +20,7 @@ const modifyRoutes = (routes, hafas, config) => ({
 	'/stops': stops(hafas, config),
 })
 
-let hafas = createBvgHafas('bvg-rest')
+let hafas = createBvgHafas(pkg.name)
 let healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
 
 if (process.env.REDIS_URL) {
