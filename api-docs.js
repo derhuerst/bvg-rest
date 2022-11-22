@@ -31,7 +31,7 @@ const order = [
 
 const descriptions = {
 	'/stops': `\
-Uses [\`vbb-stations-autocomplete\`](https://npmjs.com/package/vbb-stations-autocomplete) to find stops/stations matching \`query\`. If you don't pass \`query\`, it will just return all stops from [\`vbb-stations\`](https://npmjs.com/package/vbb-stations).
+Uses [\`vbb-stations-autocomplete@4\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0) to find stops/stations matching \`query\`. If you don't pass \`query\`, it will just return all stops from [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
 `,
 	'/locations': `\
 Uses [\`hafasClient.locations()\`](https://github.com/public-transport/hafas-client/blob/5/docs/locations.md) to **find stops/stations, POIs and addresses matching \`query\`**.
