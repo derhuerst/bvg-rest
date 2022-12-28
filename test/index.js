@@ -19,11 +19,11 @@ tape.test('/stops works', async (t) => {
 	}
 })
 
-tape.test('/stops?query=hauptbah works', async (t) => {
-	const BERLIN_HBF = '900000003201'
+tape.test('/stops?query=berlin%20ha works', async (t) => {
+	const BERLIN_HBF = 'de:11000:900003201'
 
 	{
-		const {headers, data} = await fetchWithTestApi({}, '/stops?query=hauptbah', {
+		const {headers, data} = await fetchWithTestApi({}, '/stops?query=berlin%20ha', {
 			headers: {
 				'accept': 'application/json',
 			},
