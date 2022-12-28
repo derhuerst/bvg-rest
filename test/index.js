@@ -1,8 +1,6 @@
-'use strict'
-
-const tape = require('tape')
-const {fetchWithTestApi} = require('./util')
-const {allStations} = require('../lib/vbb-stations')
+import tape from 'tape'
+import {fetchWithTestApi} from './util.js'
+import {allStations} from '../lib/vbb-stations.js'
 
 tape.test('/stops works', async (t) => {
 	const someStationId = allStations[0].id

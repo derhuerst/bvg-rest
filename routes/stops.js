@@ -1,8 +1,7 @@
-'use strict'
-
-const parse = require('cli-native').to
-const autocomplete = require('vbb-stations-autocomplete')
-const {allStations, allStationsById} = require('../lib/vbb-stations')
+import _cliNative from 'cli-native'
+const {to: parse} = _cliNative
+import autocomplete from 'vbb-stations-autocomplete'
+import {allStations, allStationsById} from '../lib/vbb-stations.js'
 
 // todo: DRY with db-rest/routes/stations.js & vbb-rest/routes/stations.js?
 
@@ -110,4 +109,6 @@ Uses [\`vbb-stations-autocomplete@4\`](https://github.com/derhuerst/vbb-stations
 	return stops
 }
 
-module.exports = createStopsRoute
+export {
+	createStopsRoute as createRoute,
+}
