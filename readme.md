@@ -1,12 +1,12 @@
 # bvg-rest
 
-***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/6/p/bvg/readme.md). It is deployed at [`v5.bvg.transport.rest`](https://v5.bvg.transport.rest/).
+***bvg-rest* is a public transport REST API**, a clean alternative to the [BVG HAFAS API](https://github.com/public-transport/hafas-client/blob/6/p/bvg/readme.md). It is deployed at [`v6.bvg.transport.rest`](https://v6.bvg.transport.rest/).
 
 [**API documentation**](docs/readme.md)
 
 ![bvg-rest architecture diagram](architecture.svg)
 
-[![API status](https://badgen.net/uptime-robot/status/m784879513-ed3cc45a865db0ba57af0001)](https://stats.uptimerobot.com/57wNLs39M/784879513)
+[![API status](https://badgen.net/uptime-robot/status/m793274554-6cf10d741ce5352cc2a6d65f)](https://stats.uptimerobot.com/57wNLs39M/793274554)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/bvg-rest.svg)
 [![support me via GitHub Sponsors](https://img.shields.io/badge/support%20me-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
 [![chat with me on Twitter](https://img.shields.io/badge/chat%20with%20me-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
@@ -18,10 +18,10 @@
 
 ### via Docker
 
-A Docker image [is available as `derhuerst/bvg-rest:5`](https://hub.docker.com/r/derhuerst/bvg-rest:5).
+A Docker image [is available as `derhuerst/bvg-rest:6`](https://hub.docker.com/r/derhuerst/bvg-rest:6).
 
 ```shell
-docker run -d -p 3000:3000 derhuerst/bvg-rest:5
+docker run -d -p 3000:3000 derhuerst/bvg-rest:6
 ```
 
 *Note:* The Docker image does not contain the Redis server.
@@ -31,8 +31,9 @@ docker run -d -p 3000:3000 derhuerst/bvg-rest:5
 ```shell
 git clone https://github.com/derhuerst/bvg-rest.git
 cd bvg-rest
-git checkout 5
-npm install --production
+git checkout 6
+npm install
+npm run build
 
 redis-server &
 npm start

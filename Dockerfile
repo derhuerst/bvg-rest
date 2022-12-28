@@ -16,9 +16,9 @@ FROM node:18-alpine
 LABEL org.opencontainers.image.title="bvg-rest"
 LABEL org.opencontainers.image.description="An HTTP API for Berlin & Brandenburg public transport."
 LABEL org.opencontainers.image.authors="Jannis R <mail@jannisr.de>"
-LABEL org.opencontainers.image.documentation="https://github.com/derhuerst/bvg-rest/tree/5"
+LABEL org.opencontainers.image.documentation="https://github.com/derhuerst/bvg-rest/tree/6"
 LABEL org.opencontainers.image.source="https://github.com/derhuerst/bvg-rest"
-LABEL org.opencontainers.image.revision="5"
+LABEL org.opencontainers.image.revision="6"
 LABEL org.opencontainers.image.licenses="ISC"
 WORKDIR /app
 
@@ -32,7 +32,7 @@ COPY --from=builder /app/docs ./docs
 
 EXPOSE 3000
 
-ENV HOSTNAME v5.bvg.transport.rest
+ENV HOSTNAME v6.bvg.transport.rest
 ENV PORT 3000
 
 CMD ["node", "index.js"]

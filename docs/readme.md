@@ -1,6 +1,6 @@
-# `v5.bvg.transport.rest` documentation
+# `v6.bvg.transport.rest` documentation
 
-[`v5.bvg.transport.rest`](https://v5.bvg.transport.rest/) is a [REST API](https://restfulapi.net) for the [Berlin](https://en.wikipedia.org/wiki/Berlin) public transportation system, [BVG](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe).
+[`v6.bvg.transport.rest`](https://v6.bvg.transport.rest/) is a [REST API](https://restfulapi.net) for the [Berlin](https://en.wikipedia.org/wiki/Berlin) public transportation system, [BVG](https://en.wikipedia.org/wiki/Berliner_Verkehrsbetriebe).
 
 [![API status](https://badgen.net/uptime-robot/status/m784879513-ed3cc45a865db0ba57af0001)](https://stats.uptimerobot.com/57wNLs39M/784879513)
 
@@ -8,7 +8,7 @@ Because it wraps [a BVG API](https://github.com/public-transport/hafas-client/bl
 
 - [Getting Started](getting-started.md)
 - [API documentation](api.md)
-- [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv5.bvg.transport.rest%2F.well-known%2Fservice-desc%0A)
+- [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv6.bvg.transport.rest%2F.well-known%2Fservice-desc%0A)
 
 ## Why use this API?
 
