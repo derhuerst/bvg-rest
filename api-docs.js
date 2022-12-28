@@ -1,4 +1,4 @@
-import generateApiDocs from 'hafas-rest-api/tools/generate-docs.js'
+import {generateApiDocs} from 'hafas-rest-api/tools/generate-docs.js'
 import {api} from './api.js'
 
 const HEAD = `\
@@ -15,8 +15,8 @@ You can just use the API without authentication. There's a [rate limit](https://
 
 const order = [
 	'/locations',
+	'/locations/nearby',
 	'/stops',
-	'/stops/nearby',
 	'/stops/reachable-from',
 	'/stops/:id',
 	'/stops/:id/departures',
@@ -32,29 +32,29 @@ const descriptions = {
 Uses [\`vbb-stations-autocomplete@4\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0) to find stops/stations matching \`query\`. If you don't pass \`query\`, it will just return all stops from [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
 `,
 	'/locations': `\
-Uses [\`hafasClient.locations()\`](https://github.com/public-transport/hafas-client/blob/5/docs/locations.md) to **find stops/stations, POIs and addresses matching \`query\`**.
+Uses [\`hafasClient.locations()\`](https://github.com/public-transport/hafas-client/blob/6/docs/locations.md) to **find stops/stations, POIs and addresses matching \`query\`**.
 `,
-	'/stops/nearby': `\
-Uses [\`hafasClient.nearby()\`](https://github.com/public-transport/hafas-client/blob/5/docs/nearby.md) to **find stops/stations close to the given geolocation**.
+	'/locations/nearby': `\
+Uses [\`hafasClient.nearby()\`](https://github.com/public-transport/hafas-client/blob/6/docs/nearby.md) to **find stops/stations & POIs close to the given geolocation**.
 `,
 	'/stops/reachable-from': `\
-Uses [\`hafasClient.reachableFrom()\`](https://github.com/public-transport/hafas-client/blob/5/docs/reachable-from.md) to **find stops/stations reachable within a certain time from an address**.
+Uses [\`hafasClient.reachableFrom()\`](https://github.com/public-transport/hafas-client/blob/6/docs/reachable-from.md) to **find stops/stations reachable within a certain time from an address**.
 `,
 	'/stops/:id': `\
-Uses [\`hafasClient.stop()\`](https://github.com/public-transport/hafas-client/blob/5/docs/stop.md) to **find a stop/station by ID**.
+Uses [\`hafasClient.stop()\`](https://github.com/public-transport/hafas-client/blob/6/docs/stop.md) to **find a stop/station by ID**.
 `,
 	'/stops/:id/departures': `\
-Uses [\`hafasClient.departures()\`](https://github.com/public-transport/hafas-client/blob/5/docs/departures.md) to **get departures at a stop/station**.
+Uses [\`hafasClient.departures()\`](https://github.com/public-transport/hafas-client/blob/6/docs/departures.md) to **get departures at a stop/station**.
 `,
 	'/stops/:id/arrivals': `\
-Works like [\`/stops/:id/departures\`](#get-stopsiddepartures), except that it uses [\`hafasClient.arrivals()\`](https://github.com/public-transport/hafas-client/blob/5/docs/arrivals.md) to **arrivals at a stop/station**.
+Works like [\`/stops/:id/departures\`](#get-stopsiddepartures), except that it uses [\`hafasClient.arrivals()\`](https://github.com/public-transport/hafas-client/blob/6/docs/arrivals.md) to **arrivals at a stop/station**.
 `,
 	'/journeys': `\
-Uses [\`hafasClient.journeys()\`](https://github.com/public-transport/hafas-client/blob/5/docs/journeys.md) to **find journeys from A (\`from\`) to B (\`to\`)**.
+Uses [\`hafasClient.journeys()\`](https://github.com/public-transport/hafas-client/blob/6/docs/journeys.md) to **find journeys from A (\`from\`) to B (\`to\`)**.
 
 \`from\` (A), \`to\` (B), and the optional \`via\` must each have one of these formats:
 
-- as stop/station ID (e.g. \`from=900000017101\` for *U Mehringdamm*)
+- as stop/station ID (e.g. \`from=900017101\` for *U Mehringdamm*)
 - as a POI (e.g. \`from.id=900980720&from.latitude=52.54333&from.longitude=13.35167\` for *ATZE Musiktheater*)
 - as an address (e.g. \`from.latitude=52.543333&from.longitude=13.351686&from.address=Voltastr.+17\` for *Voltastr. 17*)
 
@@ -62,20 +62,20 @@ Uses [\`hafasClient.journeys()\`](https://github.com/public-transport/hafas-clie
 
 Given a response, you can also fetch more journeys matching the same criteria. Instead of \`from*\`, \`to*\` & \`departure\`/\`arrival\`, pass \`earlierRef\` from the first response as \`earlierThan\` to get journeys "before", or \`laterRef\` as \`laterThan\` to get journeys "after".
 
-Check the [\`hafasClient.journeys()\` docs](https://github.com/public-transport/hafas-client/blob/5/docs/journeys.md) for more details.
+Check the [\`hafasClient.journeys()\` docs](https://github.com/public-transport/hafas-client/blob/6/docs/journeys.md) for more details.
 `,
 	'/journeys/:ref': `\
-Uses [\`hafasClient.refreshJourney()\`](https://github.com/public-transport/hafas-client/blob/5/docs/refresh-journey.md) to **"refresh" a journey, using its \`refreshToken\`**.
+Uses [\`hafasClient.refreshJourney()\`](https://github.com/public-transport/hafas-client/blob/6/docs/refresh-journey.md) to **"refresh" a journey, using its \`refreshToken\`**.
 
 The journey will be the same (equal \`from\`, \`to\`, \`via\`, date/time & vehicles used), but you can get up-to-date realtime data, like delays & cancellations.
 `,
 	'/trips/:id': `\
-Uses [\`hafasClient.trip()\`](https://github.com/public-transport/hafas-client/blob/5/docs/trip.md) to **fetch a trip by ID**.
+Uses [\`hafasClient.trip()\`](https://github.com/public-transport/hafas-client/blob/6/docs/trip.md) to **fetch a trip by ID**.
 
 A trip is a specific vehicle, stopping at a series of stops at specific points in time. Departures, arrivals & journey legs reference trips by their ID.
 `,
 	'/radar': `\
-Uses [\`hafasClient.radar()\`](https://github.com/public-transport/hafas-client/blob/5/docs/radar.md) to **find all vehicles currently in an area**, as well as their movements.
+Uses [\`hafasClient.radar()\`](https://github.com/public-transport/hafas-client/blob/6/docs/radar.md) to **find all vehicles currently in an area**, as well as their movements.
 `,
 }
 
@@ -95,7 +95,7 @@ curl 'https://v5.bvg.transport.rest/locations?query=alexanderplatz&results=1' -s
 [
 	{
 		"type": "stop",
-		"id": "900000100003",
+		"id": "900100003",
 		"name": "S+U Alexanderplatz",
 		"location": {
 			"type": "location",
@@ -113,18 +113,18 @@ curl 'https://v5.bvg.transport.rest/locations?query=alexanderplatz&results=1' -s
 ]
 \`\`\`
 `,
-	'/stops/nearby': `\
+	'/locations/nearby': `\
 ### Example
 
 \`\`\`shell
-curl 'https://v5.bvg.transport.rest/stops/nearby?latitude=52.52725&longitude=13.4123' -s | jq
+curl 'https://v5.bvg.transport.rest/locations/nearby?latitude=52.52725&longitude=13.4123' -s | jq
 \`\`\`
 
 \`\`\`js
 [
 	{
 		"type": "stop",
-		"id": "900000100016",
+		"id": "900100016",
 		"name": "U Rosa-Luxemburg-Platz",
 		"location": {
 			"type": "location",
@@ -138,7 +138,7 @@ curl 'https://v5.bvg.transport.rest/stops/nearby?latitude=52.52725&longitude=13.
 	// …
 	{
 		"type": "stop",
-		"id": "900000110005",
+		"id": "900110005",
 		"name": "U Senefelderplatz",
 		"location": { /* … */ },
 		"products": { /* … */ },
@@ -162,7 +162,7 @@ curl 'https://v5.bvg.transport.rest/stops/reachable-from?latitude=52.52446&longi
 		"stations": [
 			{
 				"type": "stop",
-				"id": "900000100051",
+				"id": "900100051",
 				"name": "U Weinmeisterstr.",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -175,14 +175,14 @@ curl 'https://v5.bvg.transport.rest/stops/reachable-from?latitude=52.52446&longi
 		"stations": [
 			{
 				"type": "stop",
-				"id": "900000007110",
+				"id": "900007110",
 				"name": "U Bernauer Str.",
 				"location": { /* … */ },
 				"products": { /* … */ }
 			},
 			{
 				"type": "stop",
-				"id": "900000100004",
+				"id": "900100004",
 				"name": "S+U Jannowitzbrücke",
 				"location": { /* … */ },
 				"products": { /* … */ }
@@ -198,13 +198,13 @@ curl 'https://v5.bvg.transport.rest/stops/reachable-from?latitude=52.52446&longi
 ### Example
 
 \`\`\`shell
-curl 'https://v5.bvg.transport.rest/stops/900000017101' -s | jq
+curl 'https://v5.bvg.transport.rest/stops/900017101' -s | jq
 \`\`\`
 
 \`\`\`js
 {
 	"type": "stop",
-	"id": "900000017101",
+	"id": "900017101",
 	"name": "U Mehringdamm",
 	"location": {
 		"type": "location",
@@ -221,7 +221,7 @@ curl 'https://v5.bvg.transport.rest/stops/900000017101' -s | jq
 
 \`\`\`shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://v5.bvg.transport.rest/stops/900000013102/departures?direction=900000014101&duration=10' -s | jq
+curl 'https://v5.bvg.transport.rest/stops/900013102/departures?direction=900014101&duration=10' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -246,7 +246,7 @@ curl 'https://v5.bvg.transport.rest/stops/900000013102/departures?direction=9000
 
 		"stop": {
 			"type": "stop",
-			"id": "900000013102",
+			"id": "900013102",
 			"name": "U Kottbusser Tor",
 			"location": { /* … */ },
 			"products": { /* … */ },
@@ -264,7 +264,7 @@ curl 'https://v5.bvg.transport.rest/stops/900000013102/departures?direction=9000
 
 \`\`\`shell
 # at U Kottbusser Tor, 10 minutes
-curl 'https://v5.bvg.transport.rest/stops/900000013102/arrivals?duration=10' -s | jq
+curl 'https://v5.bvg.transport.rest/stops/900013102/arrivals?duration=10' -s | jq
 \`\`\`
 `,
 	'/journeys': `\
@@ -272,7 +272,7 @@ curl 'https://v5.bvg.transport.rest/stops/900000013102/arrivals?duration=10' -s 
 
 \`\`\`shell
 # stop/station to POI
-curl 'https://v5.bvg.transport.rest/journeys?from=900000023201&to.id=900980720&to.name=ATZE+Musiktheater&to.latitude=52.54333&to.longitude=13.35167' -s | jq
+curl 'https://v5.bvg.transport.rest/journeys?from=900023201&to.id=900980720&to.name=ATZE+Musiktheater&to.latitude=52.54333&to.longitude=13.35167' -s | jq
 # without buses, with ticket info
 curl 'https://v5.bvg.transport.rest/journeys?from=…&to=…&bus=false&tickets=true' -s | jq
 \`\`\`

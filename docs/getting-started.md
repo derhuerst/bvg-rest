@@ -18,7 +18,7 @@ curl 'https://v5.bvg.transport.rest/locations?poi=false&addresses=false&query=me
 [
 	{
 		"type": "stop",
-		"id": "900000017101",
+		"id": "900017101",
 		"name": "U Mehringdamm",
 		"location": {
 			"type": "location",
@@ -36,7 +36,7 @@ curl 'https://v5.bvg.transport.rest/locations?poi=false&addresses=false&query=me
 	},
 	{
 		"type": "stop",
-		"id": "900000017100",
+		"id": "900017100",
 		"name": "Obentrautstr./U Mehringdamm",
 		"location": {
 			"type": "location",
@@ -52,10 +52,10 @@ curl 'https://v5.bvg.transport.rest/locations?poi=false&addresses=false&query=me
 
 ### 2. fetch departures at a stop
 
-Let's fetch 5 of the next departures at *U Mehringdamm* (which has the ID `900000017101`):
+Let's fetch 5 of the next departures at *U Mehringdamm* (which has the ID `900017101`):
 
 ```shell
-curl 'https://v5.bvg.transport.rest/stops/900000017101/departures?results=5' -s | jq
+curl 'https://v5.bvg.transport.rest/stops/900017101/departures?results=5' -s | jq
 ```
 
 ```js
@@ -81,7 +81,7 @@ curl 'https://v5.bvg.transport.rest/stops/900000017101/departures?results=5' -s 
 
 		"stop": {
 			"type": "stop",
-			"id": "900000017101",
+			"id": "900017101",
 			"name": "U Mehringdamm",
 			"location": { /* … */ },
 			"products": { /* … */ },
@@ -129,10 +129,10 @@ Note that `when` includes the `delay`, and `plannedWhen` does not.
 
 We call a connection from A to B – at a specific date & time, made up of sections on specific *trips* – `journey`.
 
-Let's fetch 2 journeys from `900000017101` (*U Mehringdamm*) to `900000014101` (*U Görlitzer Bahnhof*), departing tomorrow at 2pm (at the time of writing this).
+Let's fetch 2 journeys from `900017101` (*U Mehringdamm*) to `900014101` (*U Görlitzer Bahnhof*), departing tomorrow at 2pm (at the time of writing this).
 
 ```shell
-curl 'https://v5.bvg.transport.rest/journeys?from=900000017101&to=900000014101&departure=tomorrow+2pm&results=2' -s | jq
+curl 'https://v5.bvg.transport.rest/journeys?from=900017101&to=900014101&departure=tomorrow+2pm&results=2' -s | jq
 ```
 
 ```js
@@ -155,7 +155,7 @@ curl 'https://v5.bvg.transport.rest/journeys?from=900000017101&to=900000014101&d
 
 			"origin": {
 				"type": "stop",
-				"id": "900000017101",
+				"id": "900017101",
 				"name": "U Mehringdamm",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -168,7 +168,7 @@ curl 'https://v5.bvg.transport.rest/journeys?from=900000017101&to=900000014101&d
 
 			"destination": {
 				"type": "stop",
-				"id": "900000078101",
+				"id": "900078101",
 				"name": "U Hermannplatz",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -196,7 +196,7 @@ curl 'https://v5.bvg.transport.rest/journeys?from=900000017101&to=900000014101&d
 
 			"origin": {
 				"type": "stop",
-				"id": "900000078101",
+				"id": "900078101",
 				"name": "U Hermannplatz",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -209,7 +209,7 @@ curl 'https://v5.bvg.transport.rest/journeys?from=900000017101&to=900000014101&d
 
 			"destination": {
 				"type": "stop",
-				"id": "900000013102",
+				"id": "900013102",
 				"name": "U Kottbusser Tor",
 				"location": { /* … */ },
 				"products": { /* … */ },

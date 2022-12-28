@@ -5,12 +5,12 @@ const require = createRequire(import.meta.url)
 
 import {dirname, join as pathJoin} from 'path'
 import {fileURLToPath} from 'node:url'
-import createBvgHafas from 'bvg-hafas'
+import {createBvgHafas} from 'bvg-hafas'
 import createHealthCheck from 'hafas-client-health-check'
 import Redis from 'ioredis'
-import withCache from 'cached-hafas-client'
-import redisStore from 'cached-hafas-client/stores/redis.js'
-import createApi from 'hafas-rest-api'
+import {createCachedHafasClient as withCache} from 'cached-hafas-client'
+import {createRedisStore as redisStore} from 'cached-hafas-client/stores/redis.js'
+import {createHafasRestApi as createApi} from 'hafas-rest-api'
 import serveStatic from 'serve-static'
 const pkg = require('./package.json')
 
@@ -19,7 +19,7 @@ import {createRoute as stops} from './routes/stops.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const docsRoot = pathJoin(__dirname, 'docs')
 
-const berlinFriedrichstr = '900000100001'
+const berlinFriedrichstr = '900100001'
 
 const modifyRoutes = (routes, hafas, config) => ({
 	...routes,
@@ -64,7 +64,7 @@ const config = {
 	modifyRoutes,
 }
 
-const api = createApi(hafas, config, (api) => {
+const api = await createApi(hafas, config, (api) => {
 	api.use('/', serveStatic(docsRoot, {
 		extensions: ['html', 'htm'],
 	}))
