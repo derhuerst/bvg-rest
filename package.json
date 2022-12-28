@@ -19,7 +19,7 @@
 	"bugs": "https://github.com/derhuerst/bvg-rest/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=10"
+		"node": ">=18"
 	},
 	"dependencies": {
 		"bvg-hafas": "^3.0.1",
