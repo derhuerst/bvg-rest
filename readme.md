@@ -18,7 +18,7 @@
 
 ### via Docker
 
-A Docker image [is available as `derhuerst/bvg-rest:6`](https://hub.docker.com/r/derhuerst/bvg-rest:6).
+A Docker image [is available as `derhuerst/bvg-rest:6`](https://hub.docker.com/r/derhuerst/bvg-rest).
 
 ```shell
 docker run -d -p 3000:3000 derhuerst/bvg-rest:6
