@@ -9,6 +9,7 @@ import {
 	createBvgHafas,
 	defaults as bvgHafasDefaults,
 } from 'bvg-hafas'
+import {createWriteStream} from 'node:fs'
 import createHealthCheck from 'hafas-client-health-check'
 import Redis from 'ioredis'
 import {createCachedHafasClient as withCache} from 'cached-hafas-client'
@@ -36,6 +37,21 @@ if (process.env.RANDOM_LOCAL_ADDRESSES_RANGE) {
 	customBvgProfile.transformReq = (_, req) => {
 		req.agent = randomLocalAddressAgent
 		return req
+	}
+}
+
+if (process.env.HAFAS_REQ_RES_LOG_FILE) {
+	const hafasLogPath = process.env.HAFAS_REQ_RES_LOG_FILE
+	const hafasLog = createWriteStream(hafasLogPath, {flags: 'a'}) // append-only
+	hafasLog.on('error', (err) => console.error('hafasLog error', err))
+
+	customBvgProfile.logRequest = (ctx, req, reqId) => {
+		console.error(reqId, 'req', req.body + '') // todo: remove
+		hafasLog.write(JSON.stringify([reqId, 'req', req.body + '']) + '\n')
+	}
+	customBvgProfile.logResponse = (ctx, res, body, reqId) => {
+		console.error(reqId, 'res', body + '') // todo: remove
+		hafasLog.write(JSON.stringify([reqId, 'res', body + '']) + '\n')
 	}
 }
 
