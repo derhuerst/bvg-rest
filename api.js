@@ -5,7 +5,10 @@ const require = createRequire(import.meta.url)
 
 import {dirname, join as pathJoin} from 'path'
 import {fileURLToPath} from 'node:url'
-import {createBvgHafas} from 'bvg-hafas'
+import {
+	createBvgHafas,
+	defaults as bvgHafasDefaults,
+} from 'bvg-hafas'
 import createHealthCheck from 'hafas-client-health-check'
 import Redis from 'ioredis'
 import {createCachedHafasClient as withCache} from 'cached-hafas-client'
@@ -21,12 +24,29 @@ const docsRoot = pathJoin(__dirname, 'docs')
 
 const berlinFriedrichstr = '900100001'
 
+const customBvgProfile = {
+	...bvgHafasDefaults.profile,
+}
+
+// todo: DRY env var check with localaddress-agent/random-from-env.js
+// Currently, this is impossible: localaddress-agent is an optional dependencies, so we rely on it to check the env var.
+if (process.env.RANDOM_LOCAL_ADDRESSES_RANGE) {
+	const {randomLocalAddressAgent} = await import('localaddress-agent/random-from-env.js')
+
+	customBvgProfile.transformReq = (_, req) => {
+		req.agent = randomLocalAddressAgent
+		return req
+	}
+}
+
 const modifyRoutes = (routes, hafas, config) => ({
 	...routes,
 	'/stops': stops(hafas, config),
 })
 
-let hafas = createBvgHafas(pkg.name)
+let hafas = createBvgHafas(pkg.name, {
+	profile: customBvgProfile,
+})
 let healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
 
 if (process.env.REDIS_URL) {

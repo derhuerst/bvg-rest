@@ -33,6 +33,9 @@
 		"vbb-stations": "^8.3.1",
 		"vbb-stations-autocomplete": "^4.5.0"
 	},
+	"optionalDependencies": {
+		"localaddress-agent": "^2.1.1"
+	},
 	"scripts": {
 		"build": "REDIS_URL='' ./build/index.js",
 		"start": "node index.js",
