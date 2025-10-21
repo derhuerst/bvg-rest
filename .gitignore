@@ -9,5 +9,6 @@ pnpm-debug.log
 /package-lock.json
 /shrinkwrap.yaml
 
+/docs/api.md
 /docs/*.html
 /docs/syntax.css
