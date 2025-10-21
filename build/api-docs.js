@@ -156,42 +156,45 @@ curl 'https://v6.bvg.transport.rest/stops/reachable-from?latitude=52.52446&longi
 \`\`\`
 
 \`\`\`js
-[
-	{
-		"duration": 4,
-		"stations": [
-			{
-				"type": "stop",
-				"id": "900100051",
-				"name": "U Weinmeisterstr.",
-				"location": { /* … */ },
-				"products": { /* … */ },
-			}
-		]
-	},
-	// …
-	{
-		"duration": 7,
-		"stations": [
-			{
-				"type": "stop",
-				"id": "900007110",
-				"name": "U Bernauer Str.",
-				"location": { /* … */ },
-				"products": { /* … */ }
-			},
-			{
-				"type": "stop",
-				"id": "900100004",
-				"name": "S+U Jannowitzbrücke",
-				"location": { /* … */ },
-				"products": { /* … */ }
-			},
-			// …
-		]
-	},
-	// …
-]
+{
+	"reachable": [
+		{
+			"duration": 4,
+			"stations": [
+				{
+					"type": "stop",
+					"id": "900100051",
+					"name": "U Weinmeisterstr.",
+					"location": { /* … */ },
+					"products": { /* … */ },
+				}
+			]
+		},
+		// …
+		{
+			"duration": 7,
+			"stations": [
+				{
+					"type": "stop",
+					"id": "900007110",
+					"name": "U Bernauer Str.",
+					"location": { /* … */ },
+					"products": { /* … */ }
+				},
+				{
+					"type": "stop",
+					"id": "900100004",
+					"name": "S+U Jannowitzbrücke",
+					"location": { /* … */ },
+					"products": { /* … */ }
+				},
+				// …
+			]
+		},
+		// …
+	],
+	"realtimeDataUpdatedAt": 123456789, // UNIX timestamp
+}
 \`\`\`
 `,
 	'/stops/:id': `\
@@ -225,38 +228,41 @@ curl 'https://v6.bvg.transport.rest/stops/900013102/departures?direction=9000141
 \`\`\`
 
 \`\`\`js
-[
-	{
-		"tripId": "1|61154|54|86|29042020",
-		"direction": "Ersatz S+U Warschauer Str.",
-		"line": {
-			"type": "line",
-			"id": "u1",
-			"name": "U1",
-			"mode": "bus",
-			"product": "bus",
-			// …
+{
+	"departures": [
+		{
+			"tripId": "1|61154|54|86|29042020",
+			"direction": "Ersatz S+U Warschauer Str.",
+			"line": {
+				"type": "line",
+				"id": "u1",
+				"name": "U1",
+				"mode": "bus",
+				"product": "bus",
+				// …
+			},
+
+			"when": "2020-04-29T19:31:00+02:00",
+			"plannedWhen": "2020-04-29T19:30:00+02:00",
+			"delay": 60,
+			"platform": null,
+			"plannedPlatform": null,
+
+			"stop": {
+				"type": "stop",
+				"id": "900013102",
+				"name": "U Kottbusser Tor",
+				"location": { /* … */ },
+				"products": { /* … */ },
+				// …
+			},
+
+			"remarks": [ /* … */ ],
 		},
-
-		"when": "2020-04-29T19:31:00+02:00",
-		"plannedWhen": "2020-04-29T19:30:00+02:00",
-		"delay": 60,
-		"platform": null,
-		"plannedPlatform": null,
-
-		"stop": {
-			"type": "stop",
-			"id": "900013102",
-			"name": "U Kottbusser Tor",
-			"location": { /* … */ },
-			"products": { /* … */ },
-			// …
-		},
-
-		"remarks": [ /* … */ ],
-	},
-	// …
-]
+		// …
+	],
+	"realtimeDataUpdatedAt": 123456789, // UNIX timestamp
+}
 \`\`\`
 `,
 	'/stops/:id/arrivals': `\
